@@ -1,6 +1,6 @@
 # Leetcode-Python15
 
-## 110. Balanced Binary Tree
+## 110. Balanced Binary Tree, 257. Binary Tree Paths
 
 June 02, 2023  4h
 
@@ -75,9 +75,10 @@ class Solution:
         return max(left, right) + 1
 ```
 
-## 257. 
-二叉树的所有路径 （优先掌握递归）  
-第一次接触到**回溯**的过程
+## 257. Binary Tree Paths
+[leetcode](https://leetcode.com/problems/binary-tree-paths/)\
+二叉树的所有路径 （优先掌握递归），第一次接触到**回溯**的过程。\
+
 
 
 
