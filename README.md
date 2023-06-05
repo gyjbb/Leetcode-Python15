@@ -23,12 +23,12 @@ Recursion 3 steps:
 3. 明确单层递归的逻辑。如何判断以当前传入节点为根节点的二叉树是否是平衡二叉树呢？当然是其左子树高度和其右子树高度的差值。\
 分别求出其左右子树的高度，然后如果差值小于等于1，则返回当前二叉树的高度，否则返回-1，表示已经不是二叉平衡树了。
 > int leftHeight = getHeight(node->left); // 左\
-> if (leftHeight == -1) return -1;  //如果左子树为-1，表示其下左右子树高度差大于1，不是平衡二叉树，则整个二叉树也已经不是平衡二叉树了。\
+> if (leftHeight == -1) return -1;  // 如果左子树为-1，表示其下左右子树高度差大于1，不是平衡二叉树，则整个二叉树也已经不是平衡二叉树了。\
 > int rightHeight = getHeight(node->right); // 右\
 > if (rightHeight == -1) return -1;\
 > int result;\
 > // 中\
-> if (abs(leftHeight - rightHeight) > 1) { result = -1;} //一个节点下的左右子树高度差大于1，不是二叉树，向上返回-1，即这个节点值为-1.\
+> if (abs(leftHeight - rightHeight) > 1) { result = -1;} // 一个节点下的左右子树高度差大于1，不是二叉树，向上返回-1，即这个节点值为-1.\
 > else {result = 1 + max(leftHeight, rightHeight);} // 以当前节点为根节点的树的最大高度\
 > return result;
 
