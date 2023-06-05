@@ -16,7 +16,23 @@ The challenges today are about ~~need to delete later~~.\
 [video](https://www.bilibili.com/video/BV1Ug411S7my/?spm_id_from=333.788&vd_source=63f26efad0d35bcbb0de794512ac21f3)\
 平衡二叉树 （优先掌握递归）\
 再一次涉及到，什么是高度，什么是深度，可以巩固一下。\
-平衡二叉树定义为：一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。
+平衡二叉树定义为：一个二叉树每个节点 的左右两个子树的高度差的绝对值不超过1。\
+Recursion 3 steps:
+1. 明确递归函数的参数和返回值。参数：当前传入节点。 返回值：以当前传入节点为根节点的树的高度。
+2. 明确终止条件。递归的过程中依然是遇到空节点了为终止，返回0，表示当前节点为根节点的树高度为0。
+3. 明确单层递归的逻辑。如何判断以当前传入节点为根节点的二叉树是否是平衡二叉树呢？当然是其左子树高度和其右子树高度的差值。\
+分别求出其左右子树的高度，然后如果差值小于等于1，则返回当前二叉树的高度，否则返回-1，表示已经不是二叉平衡树了。
+> int leftHeight = getHeight(node->left); // 左\
+> if (leftHeight == -1) return -1;\
+> int rightHeight = getHeight(node->right); // 右\
+> if (rightHeight == -1) return -1;\
+> int result;\
+> // 中
+> if (abs(leftHeight - rightHeight) > 1) { result = -1;} \
+> else {result = 1 + max(leftHeight, rightHeight); // 以当前节点为根节点的树的最大高度}\
+> return result;
+
+
 ```python
 # ways 1: recursion:
 # Definition for a binary tree node.
