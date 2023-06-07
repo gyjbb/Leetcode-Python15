@@ -1,6 +1,6 @@
 # Leetcode-Python15
 
-## 110. Balanced Binary Tree, 257. Binary Tree Paths
+## 110. Balanced Binary Tree, 257. Binary Tree Paths， 404. Sum of Left Leaves
 
 June 02, 2023  4h
 
@@ -130,6 +130,51 @@ class Solution:
             self.traversal(cur.right, path[:], result)
 ```
 
-## 404.
+## 404. Sum of Left Leaves
+[leecode](https://leetcode.com/problems/sum-of-left-leaves/)\
 左叶子之和 （优先掌握递归）\
-搞清楚什么是左叶子，剩下的就是二叉树的基本操作。
+搞清楚什么是左叶子(是叶子节点，且是其父节点的左孩子），剩下的就是二叉树的基本操作。\
+递归三部曲：\
+1.确定递归函数的参数和返回值\
+2.确定终止条件： 遍历到空节点，或者遍历到叶子节点了\
+3.确定单层递归的逻辑:\
+当遇到左叶子节点的时候，记录数值，然后通过递归求取左子树左叶子之和，和 右子树左叶子之和，相加便是整个树的左叶子之和。
+```python
+# ways 1: recusion:
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
+        if root is None:    #遍历到空节点，终止
+            return 0
+        #遍历到叶子结点，其子叶为null，也终止
+        if root.left is None and root.right is None:
+            return 0
+        
+        leftValue = self.sumOfLeftLeaves(root.left) #left
+        #左子树是左子叶的情况
+        if root.left and not root.left.left and not root.left.right:
+            leftValue = root.left.val
+        
+        rightValue = self.sumOfLeftLeaves(root.right) #right
+
+        sum_val = leftValue + rightValue    #middle
+        return sum_val
+```
+```python
+# ways 1: recusion simple version:
+class Solution:
+    def sumOfLeftLeaves(self, root):
+        if root is None:
+            return 0
+        leftValue = 0
+        if root.left is not None and root.left.left is None and root.left.right is None:
+            leftValue = root.left.val
+        return leftValue + self.sumOfLeftLeaves(root.left) + self.sumOfLeftLeaves(root.right)
+```
+
+
