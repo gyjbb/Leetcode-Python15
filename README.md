@@ -6,7 +6,7 @@ June 02, 2023  4h
 
 Congratulations!\
 This is the fifteenth day for leetcode python study. Today we will learn more about the Binary Tree!\
-The challenges today are about ~~need to delete later~~.\
+The challenges today are about using recursion and traversal to solve problems.\
 迭代法，大家可以直接过，二刷有精力的时候 再去掌握迭代法。
 
 
