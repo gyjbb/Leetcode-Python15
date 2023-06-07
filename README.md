@@ -77,11 +77,58 @@ class Solution:
 
 ## 257. Binary Tree Paths
 [leetcode](https://leetcode.com/problems/binary-tree-paths/)\
-二叉树的所有路径 （优先掌握递归），第一次接触到**回溯**的过程。\
+二叉树的所有路径 （优先掌握递归），第一次接触到**回溯**的过程。
+```python
+# ways 1: recursion+回溯
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def traversal(self, cur, path, result):
+        path.append(cur.val)   #middle
+        if not cur.left and not cur.right: #reach the leaf node
+            sPath = '->'.join(map(str, path))
+            result.append(sPath)
+            return
+        if cur.left:    #left
+            self.traversal(cur.left, path, result)
+            path.pop()  #回溯一下
+        if cur.right:   #riight
+            self.traversal(cur.right, path, result)
+            path.pop()  #回溯一下
 
-
-
-
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+        result = []
+        path = []
+        if not root:
+            return result
+        self.traversal(root, path, result)
+        return result
+```
+```python
+# ways 2: recursion
+class Solution:
+    def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+        if not root:
+            return []
+        result = []
+        self.traversal(root, [], result)
+        return result
+    
+    def traversal(self, cur:TreeNode, path: List[int], result: List[str])-> None:
+        if not cur:
+            return
+        path.append(cur.val)
+        if not cur.left and not cur.right:
+            result.append('->'.join(map(str,path)))
+        if cur.left:
+            self.traversal(cur.left, path[:], result)
+        if cur.right:
+            self.traversal(cur.right, path[:], result)
+```
 
 ## 404.
 左叶子之和 （优先掌握递归）\
